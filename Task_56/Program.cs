@@ -47,25 +47,20 @@ void FindSumElem(int[,] array)
         {
             arrSum[i] += array[i, j];
         }
-        Console.WriteLine($"Сумма элементов строк: {arrSum[i]}");
+        Console.WriteLine($"Сумма элементов строки: {arrSum[i]} ");
     }
-}
-
-int FindMinElem(int[] arrSum)
-{
-    int position = 0;
     int minSum = arrSum[0];
-    for (int i = 0; i < arrSum.Length; i++)
+    int index1 = 0;
+    for (int i = 1; i < arrSum.Length; i++)
     {
         if (arrSum[i] < minSum)
         {
-            position = i;
             minSum = arrSum[i];
+            index1 = i;
         }
     }
-    return position + 1;
+    Console.Write($"Строка с минимальной суммой элементов имеет индекс: {index1} ");
 }
-
 Console.Write($"Пожалуйста, введите размерность квадратной матрицы: ");
 int var = Convert.ToInt32(Console.ReadLine());
 
@@ -73,6 +68,3 @@ Console.WriteLine($"Исходный массив: ");
 int[,] array = FillMatrixRndInt(var, var);
 PrintMatrix(array);
 FindSumElem(array);
-int[] arrSum = new int[array.GetLength(0)];
-int result = FindMinElem(arrSum);
-Console.WriteLine($"Номер строки с наименьшей суммой: {result}");
